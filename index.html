@@ -1,24 +1,43 @@
 <html>
 <head>
 <style>
-body{
-background-color:black;
-    display:flex;
-    }
-h1{
-color:white;
+html, body {height: 100%;}
+body {background: #222222; color: white;}
 
-align-items:center;
-justify-content:center;
+.breathable {
+  font-family: sans-serif;
+	font-size: 300%;
+	position: relative;
+
+	-webkit-animation: breath 8s infinite ease-in-out;
+	-moz-animation: breath 8s infinite ease-in-out;
+	animation: breath 8s infinite ease-in-out;
 }
-h1:hover{
-    -webkit-box-shadow: 2px 1px 61px 10px rgba(255,255,255,1);
--moz-box-shadow: 2px 1px 61px 10px rgba(255,255,255,1);
-box-shadow: 2px 1px 61px 10px rgba(255,255,255,1);
-    }
+@-webkit-keyframes breath {
+    0% {color: rgba(255,255,255, 1); text-shadow: 0 0 2em rgba(255,255,255, 1);}
+    55% {color: rgba(255,255,255, 0.4); font-size: 500%; text-shadow: 0 0 0.2em rgba(255,255,255, 0.5);}
+    100% {color: rgba(255,255,255, 1); font-size: 300%; text-shadow: 0 0 2em rgba(255,255,255, 1);}
+}
+@keyframes breath {
+    0% {color: rgba(255,255,255, 1); text-shadow: 0 0 2em rgba(255,255,255, 1);}
+    55% {color: rgba(255,255,255, 0.4); font-size: 500%; text-shadow: 0 0 0.2em rgba(255,255,255, 0.5);}
+    100% {color: rgba(255,255,255, 1); font-size: 300%; text-shadow: 0 0 2em rgba(255,255,255, 1);}
+}
+
+.center {
+	display: inline-block;
+	left: 40%;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
 </style>
 </head>
 <body>
-<h1>Hello World...!</h1>
+<div class="center breathable">Coming Soon...!</div>
 </body>
 </html>
