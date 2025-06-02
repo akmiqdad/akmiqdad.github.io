@@ -1,0 +1,366 @@
+/* Base Styles */
+:root {
+    /* Light Theme Colors */
+    --background-color-light: #fdfdfd;
+    --text-color-light: #333;
+    --heading-color-light: #1a1a1a;
+    --link-icon-color-light: #555;
+    --link-icon-hover-color-light: #000;
+    --button-bg-light: #eee;
+    --button-hover-bg-light: #ddd;
+    --icon-color-light: #555;
+    --pattern-line-color-light: #A52A2A; /* Blood Red for Light Theme */
+    --typing-text-color-light: #444; /* Darker text for readability */
+
+    /* Dark Theme Colors */
+    --background-color-dark: #1a1a1a;
+    --text-color-dark: #e0e0e0;
+    --heading-color-dark: #f0f0f0;
+    --link-icon-color-dark: #bbb;
+    --link-icon-hover-color-dark: #fff;
+    --button-bg-dark: #333;
+    --button-hover-bg-dark: #444;
+    --icon-color-dark: #aaa;
+    --pattern-line-color-dark: #00BFFF; /* Deep Sky Blue for Dark Theme */
+    --typing-text-color-dark: #00FFFF; /* Cyan for techy look */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-repeat: repeat;
+    /* NEW: Smaller hexagonal pattern size for a denser look */
+    background-size: 60px 52px;
+    background-color: var(--background-color-dark);
+
+    /* Background animation */
+    animation: backgroundPan 60s linear infinite;
+}
+
+/* Default Theme (Dark) */
+body {
+    /* NEW: Smaller Hexagonal Pattern for Dark Theme */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cdefs%3E%3Cpath id='h' d='M30 0L60 15L60 45L30 60L0 45L0 15Z'/%3E%3Cpattern id='grid' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cuse href='%23h' x='0' y='0' stroke='%2300BFFF' stroke-width='2' fill='none' opacity='0.15'/%3E%3Cuse href='%23h' x='30' y='26' stroke='%2300BFFF' stroke-width='2' fill='none' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
+    color: var(--text-color-dark);
+}
+
+.header-name .calligraphic {
+    color: var(--text-color-dark);
+    background: none;
+    background-color: transparent;
+}
+
+h1 {
+    color: var(--heading-color-dark);
+    font-family: 'Fira Code', monospace;
+}
+
+.bottom-links a svg {
+    stroke: var(--link-icon-color-dark);
+}
+
+.bottom-links a:hover svg {
+    stroke: var(--link-icon-hover-color-dark);
+}
+
+.theme-switcher button {
+    background-color: var(--button-bg-dark);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.theme-switcher button:hover {
+    background-color: var(--button-hover-bg-dark);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.theme-switcher button svg {
+    stroke: var(--icon-color-dark);
+}
+
+
+/* Light Theme Specifics */
+body.light-theme {
+    /* NEW: Smaller Hexagonal Pattern for Light Theme */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cdefs%3E%3Cpath id='h' d='M30 0L60 15L60 45L30 60L0 45L0 15Z'/%3E%3Cpattern id='grid' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cuse href='%23h' x='0' y='0' stroke='%23A52A2A' stroke-width='2' fill='none' opacity='0.4'/%3E%3Cuse href='%23h' x='30' y='26' stroke='%23A52A2A' stroke-width='2' fill='none' opacity='0.4'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)' /%3E%3C/svg%3E");
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+body.light-theme .header-name .calligraphic {
+    color: var(--text-color-light);
+    background: none;
+    background-color: transparent;
+}
+
+body.light-theme h1 {
+    color: var(--heading-color-light);
+    font-family: 'Fira Code', monospace;
+}
+
+body.light-theme .bottom-links a svg {
+    stroke: var(--link-icon-color-light);
+}
+
+body.light-theme .bottom-links a:hover svg {
+    stroke: var(--link-icon-hover-color-light);
+}
+
+body.light-theme .theme-switcher button {
+    background-color: var(--button-bg-light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .theme-switcher button:hover {
+    background-color: var(--button-hover-bg-light);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .theme-switcher button svg {
+    stroke: var(--icon-color-light);
+}
+
+
+/* Layout & Typography */
+.header-name {
+    position: absolute;
+    top: 5vh;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.header-name .calligraphic {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    transition: color 0.4s ease;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Container for typing animation to ensure centering */
+.code-typing-container {
+    font-size: 3em;
+    font-weight: 500;
+    margin-bottom: 0;
+    letter-spacing: -0.02em;
+    font-family: 'Fira Code', monospace;
+    color: var(--heading-color-dark);
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: content-box;
+}
+
+/* The actual text being typed */
+.typed-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    /* Typing animation */
+    animation: typing 2s steps(20, end) forwards, blink-caret .75s step-end infinite;
+    animation-delay: 0.5s;
+    
+    /* Blinking caret */
+    border-right: .15em solid;
+    padding-right: 2px;
+}
+
+/* Typing effect: Grows width from 0 to its natural content width */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Blinking cursor effect for dark theme */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--typing-text-color-dark); }
+}
+
+/* Blinking cursor effect for light theme */
+body.light-theme .code-typing-container {
+    color: var(--heading-color-light);
+}
+body.light-theme .typed-text {
+    animation: typing 2s steps(20, end) forwards, blink-caret-light .75s step-end infinite;
+    animation-delay: 0.5s;
+}
+@keyframes blink-caret-light {
+    from, to { border-color: transparent }
+    50% { border-color: var(--typing-text-color-light); }
+}
+
+/* Background Pan Animation (Diagonal) */
+@keyframes backgroundPan {
+    from { background-position: 0% 0%; }
+    /* NEW: Match pan to the new smaller hexagonal tile size */
+    to { background-position: 60px 52px; } 
+}
+
+
+/* Hide the paragraph text */
+p {
+    display: none;
+}
+
+/* Bottom Links (Footer) */
+.bottom-links {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: auto;
+}
+
+.bottom-links a {
+    text-decoration: none;
+    display: flex;
+    transition: transform 0.2s ease;
+}
+
+.bottom-links a:hover {
+    transform: translateY(-2px);
+}
+
+.bottom-links a svg {
+    width: 20px;
+    height: 20px;
+    transition: stroke 0.3s ease;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+.theme-switcher button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.theme-switcher button:hover {
+    transform: translateY(-2px);
+}
+
+.theme-switcher button svg {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide one icon based on theme */
+.sun-icon { display: block; }
+.moon-icon { display: none; }
+
+body.dark-theme .sun-icon { display: none; }
+body.dark-theme .moon-icon { display: block; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-name {
+        top: 4vh;
+    }
+    .header-name .calligraphic {
+        font-size: 2em;
+    }
+
+    .code-typing-container {
+        font-size: 2.5em;
+    }
+
+    .bottom-links {
+        padding-bottom: 20px;
+        gap: 15px;
+    }
+
+    .bottom-links a svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .theme-switcher {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .theme-switcher button {
+        width: 36px;
+        height: 36px;
+    }
+    .theme-switcher button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-name {
+        top: 3vh;
+    }
+    .header-name .calligraphic {
+        font-size: 1.8em;
+    }
+
+    .code-typing-container {
+        font-size: 2em;
+    }
+
+    .bottom-links {
+        padding-bottom: 15px;
+        gap: 10px;
+    }
+
+    .bottom-links a svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .theme-switcher {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .theme-switcher button {
+        width: 32px;
+        height: 32px;
+    }
+    .theme-switcher button svg {
+        width: 16px;
+        height: 16px;
+    }
+}
